@@ -1,6 +1,7 @@
 let contas = []
 let money = ''
 let saldoConta = 0
+let extrato = ''
     while(money!='4'){
         money = prompt(`Qual operação deseja fazer 
     1 - depositar 
@@ -24,12 +25,20 @@ let saldoConta = 0
         case "2":
             let saque = parseFloat(prompt('Qual valor gostaria de retirar?'))
             let saqueDescricao = prompt('Descreva')
-            saldoConta = saldoConta-saldoConta
-        break
+            let status2 = 'D'
+            saldoConta = saldoConta-saque
+
+                const confirme = confirm('Confirma retirada?')
+        if (confirme) {
+                contas.push(`${saqueDescricao} - ${status2} - R$ ${saque}`)
+            }
+            break
         
         case "3":
-            let extrato = parseFloat(prompt('Gostaria de ver seu extrato?'))
-            let verExtrato = parseFloat(prompt(`seu saldo é ${saldoConta}`))
+            for(let i=0; i<contas.length; i++){
+                extrato += contas[i]
+            } 
+            alert(`${extrato}`)
         break
 
         case "4":
